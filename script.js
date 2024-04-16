@@ -37,7 +37,10 @@ function toRoman(num) {
             let result = '';
 
             for (let i = 0; i < romanNumerals.length; i++) {
+              // console.log(romanNumerals[i])
                 while (num >= romanNumerals[i].value) {
+                  // console.log(num);
+                  // console.log(romanNumerals[i]);
                     result += romanNumerals[i].numeral;
                     num -= romanNumerals[i].value;
                 }
