@@ -1,8 +1,15 @@
 const output = document.querySelector("#output");
+const inputField = document.getElementById("number");
+
+inputField.addEventListener("keypress" , function (event){
+  if(event.key === "Enter"){
+    convertNumber()
+  }
+})
 
 function convertNumber(){
  
-  let inputValue = document.getElementById("number").value;
+  let inputValue = inputField.value;
   if(inputValue === ""){
     output.innerText = "Please enter a valid number"
   }else if(inputValue === "-1"){
@@ -10,14 +17,15 @@ function convertNumber(){
   }else{
     let num = parseInt(inputValue);
     if(num >= 4000){
-      output.innerText = "Please enter a number less than or equal to 3999"
+      output.innerText = "Please enter a number less than 4000"
     }else{
 
      output.innerText = toRoman(num);
+     inputField.value = "";
     }
   }
 }
-function toRoman(num) {
+function toRoman(numberToConvert) {
             const romanNumerals = [
                 { value: 1000, numeral: "M" },
                 { value: 900, numeral: "CM" },
@@ -38,11 +46,11 @@ function toRoman(num) {
 
             for (let i = 0; i < romanNumerals.length; i++) {
               // console.log(romanNumerals[i])
-                while (num >= romanNumerals[i].value) {
+                while (numberToConvert >= romanNumerals[i].value) {
                   // console.log(num);
                   // console.log(romanNumerals[i]);
                     result += romanNumerals[i].numeral;
-                    num -= romanNumerals[i].value;
+                    numberToConvert -= romanNumerals[i].value;
                 }
             }
 
